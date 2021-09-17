@@ -7,17 +7,17 @@ import io.dropwizard.setup.Environment;
 public class TodayDateApplication extends Application<TodayDateConfiguration> {
 
     public static void main(String[] args) {
-        System.out.println("SERVER running on port 8080...");
+        System.out.println("Today date server running on port 8081...");
         try {
             new TodayDateApplication().run(args);
         } catch (Exception e) {
-            System.out.println("Error initializing dropwizard service...");
+            System.out.println("Error initializing dropwizard today service...");
         }
     }
 
     @Override
     public String getName() {
-        return "TodaysDate-microservice";
+        return "TodayDate-microservice";
     }
 
     @Override
@@ -27,6 +27,6 @@ public class TodayDateApplication extends Application<TodayDateConfiguration> {
     @Override
     public void run(TodayDateConfiguration todaysDateConfiguration, Environment environment) {
         environment.jersey().register(new TodayDateResource());
-        environment.healthChecks().register("TodaysDateHC", new TodayDateHealthCheck());
+        environment.healthChecks().register("TodayDateHealthCheck", new TodayDateHealthCheck());
     }
 }
